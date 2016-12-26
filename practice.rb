@@ -1,4 +1,4 @@
-=begin
+
 #Numbers and Strings
 puts 2 + 2
 puts 4 - 2
@@ -70,7 +70,7 @@ puts array_of_names[0]
 puts array_of_names[1]
 puts array_of_names[2]
 puts array_of_names.last
-=end
+
 
 #Hashes
 array_of_names = ["john", "mary", "hank"]
@@ -80,3 +80,100 @@ hash_of_names = {:first_name => "john", :last_name => "Doe", :email => "john@gma
 puts hash_of_names[:first_name]
 puts hash_of_names.keys
 puts hash_of_names.values
+
+
+#Iterators
+player_scores = [50, 100, 30, 60]
+player_scores.each do |x|
+  if x> 50
+    puts "Play score: #{x}"
+  end
+end
+
+#or curly brace syntax
+player_scores.each { |x|
+  if x> 50
+    puts "Play score: #{x}"
+  end
+}
+
+#map
+upgraded_players_scores = player_scores.map { |x| x + 10 }
+print player_scores, "\n"
+print upgraded_players_scores, "\n"
+
+#hash
+hash_of_players = { player1: "DarthV", player2: "LukeS" }
+hash_of_players.each do |k, v|
+  puts "#{k}: #{v}"
+end
+
+
+#Methods
+def say_hello
+  puts "Hello world"
+  puts "fite me irl u nark"
+end
+say_hello
+
+def power(base, exponent)
+  result = 1
+  exponent.times do
+    result = result * base
+  end
+  result
+end
+puts power(2, 3)
+
+#Classes
+class User
+  attr_accessor :favourite_color
+  
+  def initialize(fname, lname)
+    @first_name = fname
+    @last_name = lname
+  end
+  
+  def say_name
+    puts "hi, im #{@first_name}"
+  end
+  
+  def post_tweet
+    puts "tweet posted"
+  end
+end
+
+user1 = User.new("John", "Doe")
+
+user1.say_name
+
+user1.favourite_color = "black"
+puts user1.favourite_color
+puts user1.inspect
+
+
+class User
+  attr_accessor :favourite_color
+  
+  def initialize(fname, lname)
+    @first_name = fname
+    @last_name = lname
+  end
+  
+  def say_name
+    puts "hi, im #{@first_name}"
+  end
+end
+
+user1 = User.new("John", "Doe")
+
+class Admin < User
+  def say_name
+    super
+    puts "I'm an admin user"
+  end
+end
+
+admin_user = Admin.new("Jane", "Smith")
+puts admin_user.inspect
+admin_user.say_name
